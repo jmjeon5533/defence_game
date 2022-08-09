@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public static float EnemyHp;
     void Start()
     {
+
         transform.position = linePos[lineNum].transform.position;
     }
 
