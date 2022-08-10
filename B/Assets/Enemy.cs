@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform[] linePos;
+    public Text HP;
     public float speed = 2f;
     int lineNum = 11;
 
-    public float EnemyHp;
+    public static float EnemyHp;
     void Start()
     {
         transform.position = linePos[lineNum].transform.position;
@@ -16,7 +18,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        MovePath();
+        if (CompareTag("Enem"))
+        {
+            MovePath();
+            HPmove(); 
+        }
     }
     public void MovePath()
     {
@@ -30,7 +36,13 @@ public class Enemy : MonoBehaviour
         if (lineNum == linePos.Length)
         {
             Destroy(gameObject);
+            Destroy(HP);
         }
 
+    }
+    void HPmove()
+    {
+        HP.text = $"{EnemyHp}";
+        HP.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 0f));
     }
 }

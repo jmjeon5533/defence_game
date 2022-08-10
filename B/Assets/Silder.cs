@@ -7,7 +7,7 @@ public class Silder : MonoBehaviour
 {
     public Slider slMoney;
     public Text slValue;
-    public Text[] Decrease = new Text[4];
+    public Text[] Decrease;
     GameManager gameManager;
 
     void Start()
@@ -27,7 +27,11 @@ public class Silder : MonoBehaviour
         Decrease[0].text = $"{gameManager.firstbuttonDecrease}";
         Decrease[1].text = $"{gameManager.secondbuttonDecrease}";
         Decrease[2].text = $"{gameManager.thirdbuttonDecrease}";
+
         Decrease[3].text = $"{gameManager.supplyMoneyDecrease}";
+
+        Decrease[4].text = $"{gameManager.fourthbuttonDecrease}";
+        Decrease[5].text = $"{gameManager.fifthbuttonDecrease}";
     }
     void Slider()
     {
