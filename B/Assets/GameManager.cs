@@ -1,37 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     Silder slider;
-    friendly friend;
-    Enemy Enem;
-    public int supplyMoneySpeed = 2;
-    public int supplyMoneyDecrease = 55;
+    public float supplySpeed = 1f;
 
+    
+
+    public static int Level = 1;
+
+    public static int Money = 0;
 
     public static int count;
 
-    public GameObject friendly;
-    public GameObject Enemy;
+    public GameObject Maximum;
 
-    #region ¼Ò¸ð°ª
-    public int firstbuttonDecrease = 10;
-    public int secondbuttonDecrease = 25;
-    public int thirdbuttonDecrease = 50;
-    public int fourthbuttonDecrease = 75;
-    public int fifthbuttonDecrease = 100;
+    public GameObject FillColor;
 
-    #endregion
+    public GameObject fever;
 
+    public GameObject feverSetButton;
     void Start()
     {
-        slider = GameObject.Find("MoneySlider").GetComponent<Silder>();
-        friend = GetComponent<friendly>();
-        Enem = GetComponent<Enemy>();
-        StartCoroutine(Money());
+        slider = GameObject.Find("ExperienceSlider").GetComponent<Silder>();
+
         StartCoroutine(Count());
+        fever.SetActive(false);
+        Maximum.SetActive(false);
+        
     }
 
     
@@ -40,64 +39,31 @@ public class GameManager : MonoBehaviour
         
     }
     
-    IEnumerator Money()
+    IEnumerator Fever()
     {
-        slider.slMoney.value += supplyMoneySpeed;
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(Money());
-    }
-    public void supplySpeed()
-    {
-        if (slider.slMoney.value >= supplyMoneyDecrease)
+        if (slider.slMoney.value == slider.slMoney.maxValue)
         {
-            slider.slMoney.value -= supplyMoneyDecrease;
-            supplyMoneyDecrease += 30;
-            supplyMoneySpeed += 3;
+            FillColor.GetComponent<Image>().color = Color.cyan;
+            Maximum.gameObject.SetActive(true);
         }
-    }
-    public void firstbutton()
-    {
-        if (slider.slMoney.value >= firstbuttonDecrease)
+        else
         {
-            slider.slMoney.value -= firstbuttonDecrease;
+            FillColor.GetComponent<Image>().color = Color.green;
         }
 
-    }
-    public void secondbutton()
-    {
-        if (slider.slMoney.value >= secondbuttonDecrease)
-        {
-            slider.slMoney.value -= secondbuttonDecrease;
-        }
-    }
-    public void thirdbutton()
-    {
-        if (slider.slMoney.value >= thirdbuttonDecrease)
-        {
-            slider.slMoney.value -= thirdbuttonDecrease;
-        }
-    }
-    public void fourthbutton()
-    {
-        if (slider.slMoney.value >= fourthbuttonDecrease)
-        {
-            slider.slMoney.value -= fourthbuttonDecrease;
-        }
-    }
-    public void fifthbutton()
-    {
-        if(slider.slMoney.value >= fifthbuttonDecrease)
-        {
-            slider.slMoney.value -= fifthbuttonDecrease;
-        }
+        slider.slMoney.value += supplySpeed;
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(Fever());
     }
     IEnumerator Count()
     {
         yield return new WaitForSecondsRealtime(1);
         count++;
     }
-    public void SummonButton()
+    public void FeverSetButton()
     {
-
+        StartCoroutine(Fever());
+        fever.SetActive(true);
+        feverSetButton.SetActive(false);
     }
 }

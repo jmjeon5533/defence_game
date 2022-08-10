@@ -7,10 +7,10 @@ public class Silder : MonoBehaviour
 {
     public Slider slMoney;
     public Text slValue;
-    public Text[] Decrease;
     GameManager gameManager;
+    
 
-    void Start()
+    void OnEnable()
     {
         slMoney = GetComponent<Slider>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -20,22 +20,13 @@ public class Silder : MonoBehaviour
     void Update()
     {
         Slider();
-        ButtonDecrease();
-    }
-    void ButtonDecrease()
-    {
-        Decrease[0].text = $"{gameManager.firstbuttonDecrease}";
-        Decrease[1].text = $"{gameManager.secondbuttonDecrease}";
-        Decrease[2].text = $"{gameManager.thirdbuttonDecrease}";
-
-        Decrease[3].text = $"{gameManager.supplyMoneyDecrease}";
-
-        Decrease[4].text = $"{gameManager.fourthbuttonDecrease}";
-        Decrease[5].text = $"{gameManager.fifthbuttonDecrease}";
     }
     void Slider()
     {
-        slValue.text = $"{slMoney.value}";
+        if (slMoney.value != slMoney.maxValue) slValue.text = $"{slMoney.value / 500 * 100}%";
+
+        else if (slMoney.value == slMoney.maxValue) slValue.text = "Fever!";
+
         if (slMoney.value <= 0)
             transform.Find("Fill Area").gameObject.SetActive(false);
         else
