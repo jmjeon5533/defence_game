@@ -36,10 +36,7 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
     }
     public void OnBeginDrag(PointerEventData eventData) => curPos = SetPos();
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        isDrag = true;
-    }
+    public void OnDrag(PointerEventData eventData) => isDrag = true;
 
     public void OnEndDrag(PointerEventData eventData)
     {
