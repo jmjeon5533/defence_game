@@ -23,7 +23,9 @@ public class Silder : MonoBehaviour
     }
     void Slider()
     {
-        if (slMoney.value != slMoney.maxValue) slValue.text = $"{slMoney.value / 500 * 100}%";
+        
+        string format = string.Format("{0:0}", slMoney.value / 500 * 100) + "%";
+        if (slMoney.value != slMoney.maxValue) slValue.text = format;
 
         else if (slMoney.value == slMoney.maxValue) slValue.text = "Fever!";
 
