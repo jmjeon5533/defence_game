@@ -80,11 +80,11 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
     void Update()
     {
         tabSlider.value = scroll.value;
-        /*
+        
         if (!isDrag) scroll.value = Mathf.Lerp(scroll.value, targetPos, 0.1f);
-
+        
         for (int i = 0; i < SIZE; i++) BtnRect[i].sizeDelta = new Vector2(i == targetIndex ? 480 : 240, BtnRect[i].sizeDelta.y);
-        */
+        
     }
 
     public void GetCoin()
