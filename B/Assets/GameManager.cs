@@ -9,30 +9,54 @@ public class GameManager : MonoBehaviour
     public float supplySpeed = 1f; //슬라이더가 차는 속도
 
     public static float Money = 0; //재화
-
-    public Text TouchMoneyUp; 
+    [Header ("터치 관련")]
+    public Text TouchMoneyUp;
     public Text TouchMoneyDec;
+    [Tooltip ("터치 재화량")]
     public int TouchMoney = 1; //터치 재화량
+    [Tooltip("터치 재화량 레벨")]
     public int TouchMoneyLevel = 1; //터치 재화량 강화레벨
+    [Tooltip("터치 재화량 강화 소모량")]
     public float TouchMoneyDecrease = 10; //터치 재화량 강화 소모량
-
+    [Header("초당 관련")]
     public Text perSecondMoneyUp; 
     public Text PerSecondMoneyDec;
+    [Tooltip("초당 재화량")]
     public int PerSecondMoney = 0; //초당 재화량
+    [Tooltip("초당 재화량 레벨")]
     public int PerSecondMoneyLevel = 0; //초당 재화량 강화레벨
-    public float PerSecondMoneyDecrease = 100; //초당 재화량 강화 소모량
+    [Tooltip("초당 재화량 강화 소모량")]
+    public float PerSecondMoneyDecrease = 150; //초당 재화량 강화 소모량
 
-    public Text FeverDec;
-    public int FeverDecrease = 5000; //피버 구매 소모량
-
-
-    public int ElementalFireDecrease = 10000;
-    public int ElementalWaterDecrease;
-    public int ElementalGrassDecrease;
-    public int ElementalWindDecrease;
-
+    [Header("원소 관련")]
+    [Tooltip("불 원소 영입 소모량")]
+    public int ElementalFireDecrease = 10000; //불 원소 영입 소모량
+    [Tooltip("물 원소 영입 소모량")]
+    public int ElementalWaterDecrease; //물 원소 영입 소모량
+    [Tooltip("풀 원소 영입 소모량")]
+    public int ElementalGrassDecrease; //풀 원소 영입 소모량
+    [Tooltip("바람 원소 영입 소모량")]
+    public int ElementalWindDecrease; //바람 원소 영입 소모량
+    [Space (10)]
+    [Tooltip("불 원소 강화 소모량")]
+    public int ElementalFireUpgradeDecrease; //불 원소 강화 소모량
+    [Tooltip("물 원소 강화 소모량")]
+    public int ElementalWaterUpgradeDecrease; //물 원소 강화 소모량
+    [Tooltip("풀 원소 강화 소모량")]
+    public int ElementalGrassUpgradeDecrease; //풀 원소 강화 소모량
+    [Tooltip("바람 원소 강화 소모량")]
+    public int ElementalWindUpgradeDecrease; //바람 원소 강화 소모량
+    [Space(10)]
+    public bool ElementalFireOn = false;
+    public bool ElementalWaterOn = false;
+    public bool ElementalGrassOn = false;
+    public bool ElementalWindOn = false;
+    [Space(10)]
+    [Tooltip("재화량")]
     public Text MoneyText;
+    [Tooltip("터치 당 재화")]
     public Text TouchResource;
+    [Tooltip("초 당 재화")]
     public Text PerSecondResource;
 
     public static int count; 
@@ -40,6 +64,10 @@ public class GameManager : MonoBehaviour
     public GameObject Maximum;
 
     public GameObject FillColor;
+
+    [Header("피버 관련")]
+    public Text FeverDec;
+    public int FeverDecrease = 5000; //피버 구매 소모량
 
     public GameObject fever;
     public int TouchEndFeverValue; //피버가 끝난 후의 터치 재화량
@@ -49,10 +77,6 @@ public class GameManager : MonoBehaviour
 
     public bool FeverOn = false; //피버 활성화 유무
 
-    public bool ElementalFireOn = false;
-    public bool ElementalWaterOn = false;
-    public bool ElementalGrassOn = false;
-    public bool ElementalWindOn = false;
     
     void Start()
     {
