@@ -16,19 +16,19 @@ public class Button : MonoBehaviour
 
     public void OnClickStartButton()
     {
-        SceneManager.LoadScene("In_game");
+        SceneManager.LoadScene("InGame");
     }
 
     public void OnClickCreditButton()
     {
-        FadeInOut(0.2f, 1);
+        FadeInOut(0.2f, 1.5f);
         Credit.transform.DOLocalMove(new Vector3(0, 0, 0), 1.5f).SetEase(Ease.OutBack);
     }
 
     public void OnClickHomeButton()
     {
-        FadeInOut(1, 1);
-        Credit.transform.DOLocalMove(new Vector3(0, 500, 0), 1.5f).SetEase(Ease.InBack);
+        FadeInOut(1, 1.5f);
+        Credit.transform.DOLocalMove(new Vector3(0, 3000, 0), 1.5f).SetEase(Ease.InBack);
     }
 
     void FadeInOut(float FadeValue, float Time)
