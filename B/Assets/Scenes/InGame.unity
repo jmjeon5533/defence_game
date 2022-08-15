@@ -4737,10 +4737,10 @@ MonoBehaviour:
   WaterDec: {fileID: 266568852}
   GrassDec: {fileID: 1454676513}
   WindDec: {fileID: 592051663}
-  FireOn: 0
-  WaterOn: 0
-  GrassOn: 0
-  WindOn: 0
+  FireButtonText: {fileID: 1145843591}
+  WaterButtonText: {fileID: 463321048}
+  GrassButtonText: {fileID: 1127139004}
+  WindButtonText: {fileID: 1703478993}
 --- !u!1 &1318977162
 GameObject:
   m_ObjectHideFlags: 0

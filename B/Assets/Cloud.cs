@@ -13,7 +13,7 @@ public class Cloud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left);
+        transform.Translate(new Vector2(-0.5f,0));
         PositionCloud();
 
     }

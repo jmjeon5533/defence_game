@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
             {
                 TouchMoneyLevel++;
                 Money -= TouchMoneyDecrease;
-                TouchMoneyDecrease = Mathf.Round(TouchMoneyDecrease * 1.1f);
+                TouchMoneyDecrease = Mathf.Round(TouchMoneyDecrease * 1.15f);
                 TouchMoney += 2;
             }
             else

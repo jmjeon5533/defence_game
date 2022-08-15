@@ -7,7 +7,8 @@ public class ElementalTab : MonoBehaviour
 {
     GameManager gm;
     public Text FireDec, WaterDec, GrassDec, WindDec;
-    public bool FireOn = false, WaterOn = false, GrassOn = false, WindOn = false;
+
+    public Text FireButtonText, WaterButtonText, GrassButtonText, WindButtonText;
 
     void Start()
     {
@@ -17,20 +18,51 @@ public class ElementalTab : MonoBehaviour
     void Update()
     {
         Decrease();
+        ButtonText();
     }
     void Decrease()
     {
-        FireDec.text = $"비용 : {gm.ElementalFireDecrease}";
-        WaterDec.text = $"비용 : {gm.ElementalWaterDecrease}";
-        GrassDec.text = $"비용 : {gm.ElementalGrassDecrease}";
-        WindDec.text = $"비용 : {gm.ElementalWindDecrease}";
+        if (!gm.ElementalFireOn)
+            FireDec.text = $"비용 : {gm.ElementalFireDecrease}";
+        if (!gm.ElementalWaterOn)
+            WaterDec.text = $"비용 : {gm.ElementalWaterDecrease}";
+        if (!gm.ElementalGrassOn)
+            GrassDec.text = $"비용 : {gm.ElementalGrassDecrease}";
+        if (!gm.ElementalWindOn)
+            WindDec.text = $"비용 : {gm.ElementalWindDecrease}";
+    }
+    void ButtonText()
+    {
+        if (!gm.ElementalFireOn)
+            FireButtonText.text = "영입";
+        else
+            FireButtonText.text = "강화";
+
+        if (!gm.ElementalWaterOn)
+            WaterButtonText.text = "영입";
+        else
+            WaterButtonText.text = "강화";
+
+        if (!gm.ElementalGrassOn)
+            GrassButtonText.text = "영입";
+        else
+            GrassButtonText.text = "강화";
+
+        if (!gm.ElementalWindOn)
+            WindButtonText.text = "영입";
+        else
+            WindButtonText.text = "강화";
     }
     public void FireButton()
     {
-        
-        if (GameManager.Money >= gm.ElementalFireDecrease)
+        if (!gm.ElementalFireOn)
         {
-            GameManager.Money -= gm.ElementalFireDecrease;
+            if (GameManager.Money >= gm.ElementalFireDecrease)
+            {
+                gm.ElementalFireOn = true;
+                GameManager.Money -= gm.ElementalFireDecrease;
+
+            }
         }
     }
     public void WaterButton()
