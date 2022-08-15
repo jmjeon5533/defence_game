@@ -6,20 +6,28 @@ using UnityEngine.UI;
 public class ElementalTab : MonoBehaviour
 {
     GameManager gm;
-    public 
+    public Text FireDec, WaterDec, GrassDec, WindDec;
+    public bool FireOn = false, WaterOn = false, GrassOn = false, WindOn = false;
 
     void Start()
     {
         gm = GetComponent<GameManager>();
     }
-
     
     void Update()
     {
-        
+        Decrease();
+    }
+    void Decrease()
+    {
+        FireDec.text = $"비용 : {gm.ElementalFireDecrease}";
+        WaterDec.text = $"비용 : {gm.ElementalWaterDecrease}";
+        GrassDec.text = $"비용 : {gm.ElementalGrassDecrease}";
+        WindDec.text = $"비용 : {gm.ElementalWindDecrease}";
     }
     public void FireButton()
     {
+        
         if (GameManager.Money >= gm.ElementalFireDecrease)
         {
             GameManager.Money -= gm.ElementalFireDecrease;
