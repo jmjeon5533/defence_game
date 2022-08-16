@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public float supplySpeed = 1f;
 
     public static float Money = 0;
-
+   
     public Text TouchMoneyUp;
     public Text TouchMoneyDec;
     public int TouchMoney = 1;
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         FeverDec.text = $"ºñ¿ë : {FeverDecrease}";
     }
 
-
+    
     void Update()
     {
         //FeverMoney();
