@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    Silder slider; //슬라이더를 받아올 변수
-    public float supplySpeed = 1f; //슬라이더가 차는 속도
+    Silder slider; //피버 슬라이더를 받아올 변수
+    public float supplySpeed = 1f; //피버 슬라이더가 차는 속도
 
     public static float Money = 0; //재화
     [Header ("터치 관련")]
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("물 원소 강화 소모량")]
     public int[] ElementalWaterUpgradeDecrease = new int[50]; //물 원소 강화 소모량
     [Tooltip("풀 원소 강화 소모량")]
-    public int[] ElementalGrassUpgradeDecrease = new int[50]; //풀 원소 강화 소모량
+    public int[] ElementalGrassUpgradeDecrease = new int[10]; //풀 원소 강화 소모량
     [Tooltip("바람 원소 강화 소모량")]
     public int[] ElementalWindUpgradeDecrease = new int[10]; //바람 원소 강화 소모량
     [Space(10)]
@@ -51,10 +51,10 @@ public class GameManager : MonoBehaviour
     public bool ElementalGrassOn = false;
     public bool ElementalWindOn = false;
     [Space(10)]
-    public int[] ElementalFireMoney = new int[] { 0, 1 }; //불 원소 터치당 재화 수급량
-    public int[] ElementalWaterMoney = new int[] { 0, 1 }; //물 원소 초당 재화 수급량
-    public int ElementalGrassMoney = 2; //풀 원소 상한선 추가량
-    public float ElementalWindMoney = 0.99f; //바람 원소 피버 재사용 대기시간 감소량
+    public int[] ElementalFireMoney = new int[50];//불 원소 터치당 재화 수급량
+    public int[] ElementalWaterMoney = new int[50]; //물 원소 초당 재화 수급량
+    public int ElementalGrassMoney = 0; //풀 원소 상한선 추가량
+    public float[] ElementalWindMoney = new float[10]; //바람 원소 피버 재사용 대기시간 감소량
     [Space(10)]
     public int ElementalFireMoneyLevel = 0;
     public int ElementalWaterMoneyLevel = 0;
@@ -62,6 +62,16 @@ public class GameManager : MonoBehaviour
     public int ElementalWindMoneyLevel = 0;
     [Space(10)]
     public int ElementalNumber = 0;
+    [Space(5)]
+    public int ElementalMaxNum = 20;
+    public bool ElementalMaximum = false;
+    public GameObject ElementalMax;
+    public Text ElementalN;
+    [Space(10)]
+    public int ElementalFireNumber = 0;
+    public int ElementalWaterNumber = 0;
+    public int ElementalGrassNumber = 0;
+    public int ElementalWindNumber = 0;
     [Space(10)]
     [Tooltip("재화량")]
     public Text MoneyText;
@@ -80,10 +90,27 @@ public class GameManager : MonoBehaviour
     public Text FeverDec;
     public int FeverDecrease = 5000; //피버 구매 소모량
 
+    public int FeverTimeDecrease = 500000; //피버 지속시간 증가 소모량
+
+    public int FeverCooltimeDecrease = 600000; //피버 쿨타임 감소 소모량
+
+
     public GameObject fever;
     public int TouchEndFeverValue; //피버가 끝난 후의 터치 재화량
     public int PerEndFeverValue; //피버가 끝난 후의 초당 재화량
-    public GameObject feverSetButton;
+
+    public float FeverTimeupgrade = 1.5f;
+    public float FeverCooltimeUpgrade = 0.5f;
+
+    public Text FeverTimeUp;
+    public Text FeverTimeDec;
+
+    public Text FeverCoolTimeUp;
+    public Text FeverCoolTimeDec;
+
+    public GameObject FeverSetButton; //피버 구매 버튼
+    public GameObject FeverTimeButton; //피버 지속시간 버튼
+    public GameObject FeverCoolTimeButton; //피버 쿨타임 버튼
     public GameObject feverError;
 
     public bool FeverOn = false; //피버 활성화 유무
@@ -105,6 +132,21 @@ public class GameManager : MonoBehaviour
     {
         MoneyUI();
         Cheat();
+        ElementalNum();
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            pos += new Vector2(0, 1.5f);
+
+            Ray2D ray;
+            RaycastHit2D hit = Physics2D.Raycast(pos, Vector3.back, 100f, LayerMask.GetMask("MoneyPack"));
+            if (hit)
+            {
+                Destroy(hit.collider.gameObject);
+                Money += 10000;
+            }
+        }
     }
     void Cheat()
     {
@@ -116,8 +158,8 @@ public class GameManager : MonoBehaviour
     void MoneyUI()
     {
         MoneyText.text = Money.ToString();
-        TouchResource.text = $"터치 당 재화 : {TouchMoney}";
-        PerSecondResource.text = $"초 당 재화 : {PerSecondMoney}";
+        TouchResource.text = $"터치 당 재화 : {TouchMoney + ElementalFireMoney[ElementalFireMoneyLevel]}";
+        PerSecondResource.text = $"초 당 재화 : {PerSecondMoney + ElementalWaterMoney[ElementalWaterMoneyLevel]}";
 
         TouchMoneyUp.text = $"터치 당 재화 \n수급량 + {TouchMoney}";
         TouchMoneyDec.text = $"비용 : {TouchMoneyDecrease}";
@@ -125,6 +167,29 @@ public class GameManager : MonoBehaviour
         perSecondMoneyUp.text = $"초 당 재화 \n수급량 + {PerSecondMoney}";
         PerSecondMoneyDec.text = $"비용 : {PerSecondMoneyDecrease}";
 
+        //sFeverTimeUp.text = $"피버 지속시간\n증가 + {}"
+
+        ElementalN.text = $"{ElementalNumber}/{ElementalMaxNum}";
+
+    }
+    public void ElementalNum()
+    {
+        ElementalNumber = (
+            ElementalFireNumber
+            + ElementalWaterNumber
+            + ElementalGrassNumber
+            + ElementalWindNumber);
+        if (ElementalMaxNum == ElementalNumber) ElementalMaximum = true;
+    }
+    public void ElementalError()
+    {
+        StartCoroutine(ElementErr());
+    }
+    IEnumerator ElementErr()
+    {
+        ElementalMax.SetActive(true);
+        yield return new WaitForSeconds(1);
+        ElementalMax.SetActive(false);
     }
     IEnumerator Fever() 
     {
@@ -144,18 +209,34 @@ public class GameManager : MonoBehaviour
                 //게이지의 색깔을 초록색으로 바꾼다
             }
 
-            slider.slMoney.value += supplySpeed; //게이지가 속도만큼 점점 찬다
+            slider.slMoney.value += (supplySpeed + ElementalWindMoney[ElementalWindMoneyLevel]); //게이지가 속도만큼 점점 찬다
             yield return new WaitForSeconds(0.1f);
         }
     }
-    public void FeverSetButton() //피버 구매 버튼
+    public void feverSetButton() //피버 구매 버튼
     {
         if (Money >= FeverDecrease)
         {
             Money -= FeverDecrease;
             StartCoroutine(Fever());
             fever.SetActive(true);
-            feverSetButton.SetActive(false);
+            FeverSetButton.SetActive(false);
+        }
+    }
+    public void FeverTimeUpgrade()
+    {
+        if (Money >= FeverTimeDecrease)
+        {
+            Money -= FeverTimeDecrease;
+            FeverTimeButton.SetActive(false);
+        }
+    }
+    public void FeverCoolTimeUpgrade()
+    {
+        if (Money >= FeverCooltimeDecrease)
+        {
+            Money -= FeverCooltimeDecrease;
+            FeverCoolTimeButton.SetActive(false);
         }
     }
     IEnumerator PerMoneyCount() //초당 재화 수급
