@@ -5,8 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - NestedScrollManager
-  - Cloud1
-  - Cloud2
+  - ElementalFire
+  - ElementalWater
+  - ElementalGrass
+  - ElementalWind
   layers:
   - Default
   - TransparentFX

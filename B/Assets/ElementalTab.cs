@@ -10,80 +10,82 @@ public class ElementalTab : MonoBehaviour
 
     public Text FireButtonText, WaterButtonText, GrassButtonText, WindButtonText;
 
+    public Text FirePerSecond, WaterPerSecond, GrassPerSecond, WindPerSecond;
+
+    public GameObject Fire, Water, Grass, Wind;
+
+    Vector2 vec;
+
     void Start()
     {
         gm = GetComponent<GameManager>();
+        
     }
-    
+
     void Update()
     {
         Decrease();
-        ButtonText();
+        vec = new Vector2(Random.Range(-11.35f, -9.85f), Random.Range(-1.2f, 0.3f));
     }
-    void Decrease()
+    void Decrease() //강화 비용
     {
-        if (!gm.ElementalFireOn)
-            FireDec.text = $"비용 : {gm.ElementalFireDecrease}";
-        if (!gm.ElementalWaterOn)
-            WaterDec.text = $"비용 : {gm.ElementalWaterDecrease}";
-        if (!gm.ElementalGrassOn)
-            GrassDec.text = $"비용 : {gm.ElementalGrassDecrease}";
-        if (!gm.ElementalWindOn)
-            WindDec.text = $"비용 : {gm.ElementalWindDecrease}";
-    }
-    void ButtonText()
-    {
-        if (!gm.ElementalFireOn)
-            FireButtonText.text = "영입";
-        else
-            FireButtonText.text = "강화";
+        FireDec.text = $"비용 :\n{gm.ElementalFireUpgradeDecrease[gm.ElementalFireLevel]}";
+        WaterDec.text = $"비용 :\n{gm.ElementalWaterUpgradeDecrease[gm.ElementalWaterLevel]}";
+        GrassDec.text = $"비용 :\n{gm.ElementalGrassUpgradeDecrease[gm.ElementalGrassLevel]}";
+        WindDec.text = $"비용 :\n{gm.ElementalWindUpgradeDecrease[gm.ElementalWindLevel]}";
 
-        if (!gm.ElementalWaterOn)
-            WaterButtonText.text = "영입";
-        else
-            WaterButtonText.text = "강화";
-
-        if (!gm.ElementalGrassOn)
-            GrassButtonText.text = "영입";
-        else
-            GrassButtonText.text = "강화";
-
-        if (!gm.ElementalWindOn)
-            WindButtonText.text = "영입";
-        else
-            WindButtonText.text = "강화";
+        FirePerSecond.text = $"+터지 당\n재화 수급 : {gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]}";
+        WaterPerSecond.text = $"초당\n재화 수급 : {gm.ElementalWaterMoney[gm.ElementalWaterMoneyLevel]}";
+        GrassPerSecond.text = $"원소 상한선 추가 : {gm.ElementalGrassMoney}";
+        WindPerSecond.text = $"피버 재사용\n대기시간 감소 : {gm.ElementalWindMoney}";
     }
     public void FireButton()
     {
-        if (!gm.ElementalFireOn)
+        if(GameManager.Money >=
+            gm.ElementalFireUpgradeDecrease[gm.ElementalFireLevel])
         {
-            if (GameManager.Money >= gm.ElementalFireDecrease)
-            {
-                gm.ElementalFireOn = true;
-                GameManager.Money -= gm.ElementalFireDecrease;
-
-            }
+            
+            GameManager.Money -= gm.ElementalFireUpgradeDecrease[gm.ElementalFireLevel];
+            gm.ElementalFireLevel++;
+            gm.ElementalFireOn = true;
+            Instantiate(Fire,vec,Quaternion.identity);
+            gm.ElementalFireMoneyLevel++;
         }
     }
     public void WaterButton()
     {
-        if (GameManager.Money >= gm.ElementalWaterDecrease)
+        if (GameManager.Money >=
+            gm.ElementalWaterUpgradeDecrease[gm.ElementalWaterLevel])
         {
-            GameManager.Money -= gm.ElementalWaterDecrease;
+
+            GameManager.Money -= gm.ElementalWaterUpgradeDecrease[gm.ElementalWaterLevel];
+            gm.ElementalWaterLevel++;
+            gm.ElementalWaterOn = true;
+            gm.ElementalWaterMoneyLevel++;
         }
     }
     public void GrassButton()
     {
-        if (GameManager.Money >= gm.ElementalGrassDecrease)
+        if (GameManager.Money >=
+            gm.ElementalGrassUpgradeDecrease[gm.ElementalGrassLevel])
         {
-            GameManager.Money -= gm.ElementalGrassDecrease;
+
+            GameManager.Money -= gm.ElementalFireUpgradeDecrease[gm.ElementalGrassLevel];
+            gm.ElementalGrassLevel++;
+            gm.ElementalGrassOn = true;
+            gm.ElementalGrassMoneyLevel++;
         }
     }
     public void WindButton()
     {
-        if (GameManager.Money >= gm.ElementalWindDecrease)
+        if (GameManager.Money >=
+            gm.ElementalWindUpgradeDecrease[gm.ElementalFireLevel])
         {
-            GameManager.Money -= gm.ElementalWindDecrease;
+
+            GameManager.Money -= gm.ElementalWindUpgradeDecrease[gm.ElementalWindLevel];
+            gm.ElementalWindLevel++;
+            gm.ElementalWindOn = true;
+            gm.ElementalWindMoneyLevel++;
         }
     }
 }

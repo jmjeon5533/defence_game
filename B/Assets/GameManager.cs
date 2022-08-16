@@ -27,30 +27,41 @@ public class GameManager : MonoBehaviour
     public int PerSecondMoneyLevel = 0; //초당 재화량 강화레벨
     [Tooltip("초당 재화량 강화 소모량")]
     public float PerSecondMoneyDecrease = 150; //초당 재화량 강화 소모량
-
-    [Header("원소 관련")]
-    [Tooltip("불 원소 영입 소모량")]
-    public int ElementalFireDecrease = 10000; //불 원소 영입 소모량
-    [Tooltip("물 원소 영입 소모량")]
-    public int ElementalWaterDecrease; //물 원소 영입 소모량
-    [Tooltip("풀 원소 영입 소모량")]
-    public int ElementalGrassDecrease; //풀 원소 영입 소모량
-    [Tooltip("바람 원소 영입 소모량")]
-    public int ElementalWindDecrease; //바람 원소 영입 소모량
-    [Space (10)]
+    [Space(10)]
     [Tooltip("불 원소 강화 소모량")]
-    public int ElementalFireUpgradeDecrease; //불 원소 강화 소모량
+    public int[] ElementalFireUpgradeDecrease = new int[50]; //불 원소 강화 소모량
     [Tooltip("물 원소 강화 소모량")]
-    public int ElementalWaterUpgradeDecrease; //물 원소 강화 소모량
+    public int[] ElementalWaterUpgradeDecrease = new int[50]; //물 원소 강화 소모량
     [Tooltip("풀 원소 강화 소모량")]
-    public int ElementalGrassUpgradeDecrease; //풀 원소 강화 소모량
+    public int[] ElementalGrassUpgradeDecrease = new int[50]; //풀 원소 강화 소모량
     [Tooltip("바람 원소 강화 소모량")]
-    public int ElementalWindUpgradeDecrease; //바람 원소 강화 소모량
+    public int[] ElementalWindUpgradeDecrease = new int[10]; //바람 원소 강화 소모량
+    [Space(10)]
+    [Tooltip("불 원소 강화 레벨")]
+    public int ElementalFireLevel = 1; //불 원소 강화 레벨
+    [Tooltip("물 원소 강화 레벨")]
+    public int ElementalWaterLevel = 1; //물 원소 강화 레벨
+    [Tooltip("풀 원소 강화 레벨")]
+    public int ElementalGrassLevel = 1; //풀 원소 강화 레벨
+    [Tooltip("바람 원소 강화 레벨")]
+    public int ElementalWindLevel = 1; //바람 원소 강화 레벨
     [Space(10)]
     public bool ElementalFireOn = false;
     public bool ElementalWaterOn = false;
     public bool ElementalGrassOn = false;
     public bool ElementalWindOn = false;
+    [Space(10)]
+    public int[] ElementalFireMoney = new int[] { 0, 1 }; //불 원소 터치당 재화 수급량
+    public int[] ElementalWaterMoney = new int[] { 0, 1 }; //물 원소 초당 재화 수급량
+    public int ElementalGrassMoney = 2; //풀 원소 상한선 추가량
+    public float ElementalWindMoney = 0.99f; //바람 원소 피버 재사용 대기시간 감소량
+    [Space(10)]
+    public int ElementalFireMoneyLevel = 0;
+    public int ElementalWaterMoneyLevel = 0;
+    public int ElementalGrassMoneyLevel = 0;
+    public int ElementalWindMoneyLevel = 0;
+    [Space(10)]
+    public int ElementalNumber = 0;
     [Space(10)]
     [Tooltip("재화량")]
     public Text MoneyText;
@@ -92,8 +103,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Cheat();
         MoneyUI();
+        Cheat();
     }
     void Cheat()
     {
@@ -115,21 +126,25 @@ public class GameManager : MonoBehaviour
         PerSecondMoneyDec.text = $"비용 : {PerSecondMoneyDecrease}";
 
     }
-    IEnumerator Fever()
+    IEnumerator Fever() 
     {
-        while (!FeverOn)
+        while (!FeverOn) //피버를 누르지 않았을 때
         {
             if (slider.slMoney.value == slider.slMoney.maxValue)
+                //피버 게이지가 꽉 차면
             {
                 FillColor.GetComponent<Image>().color = Color.cyan;
+                //게이지의 색깔을 하늘색으로 바꾸고
                 Maximum.gameObject.SetActive(true);
+                //반짝이는 오브젝트를 보이게 한다
             }
-            else
+            else //꽉 차지 않으면
             {
                 FillColor.GetComponent<Image>().color = Color.green;
+                //게이지의 색깔을 초록색으로 바꾼다
             }
 
-            slider.slMoney.value += supplySpeed;
+            slider.slMoney.value += supplySpeed; //게이지가 속도만큼 점점 찬다
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -148,7 +163,8 @@ public class GameManager : MonoBehaviour
         if (PerSecondMoneyLevel >= 1)
         {
             Money += PerSecondMoney;
-
+            Money +=
+                ElementalWaterMoney[ElementalWaterMoneyLevel];
         }
         yield return new WaitForSeconds(1);
         StartCoroutine(PerMoneyCount());
@@ -206,7 +222,7 @@ public class GameManager : MonoBehaviour
             PerSecondMoney *= 2;//초당 버는 돈 *2
 
             Maximum.gameObject.SetActive(false);
-            while (slider.slMoney.value > 0) //피버 게이지가 0이 될 동안
+            while (slider.slMoney.value > 0) //피버 게이지가 0이 될 때까지
             {
                 slider.slMoney.value -= 3; // 피버 게이지를 서서히 줄어들게
                 yield return new WaitForSeconds(0.1f);
@@ -224,4 +240,5 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         feverError.SetActive(false);
     }
+    
 }
