@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class MoneyBag : MonoBehaviour
 {
     // Start is called before the first frame update
-    RectTransform rect;
+    //RectTransform rect;
     public int cool;
     int c;
+    public int livingTime = 30;
     int direction;
-    public float upDownSpeed = 120f;
-    public float speed = 480f;
-    bool isSummon = false;
+    public float upDownSpeed = 1f;
+    public float speed = 1f;
+    public bool isSummon = false;
+    public NestedScrollManager scroll;
     void Start()
     {
         
@@ -21,42 +23,59 @@ public class MoneyBag : MonoBehaviour
         direction = Random.Range(2,4);
         StartCoroutine(UpDown());
         StartCoroutine(delay());
-        rect = GetComponent<RectTransform>();
-        rect.position = new Vector3(-50, Random.Range(260, 2520), rect.position.z);
+        //rect = GetComponent<RectTransform>();
+        //rect.position = Camera.main.ScreenToWorldPoint(new Vector3(-800, Random.Range(-1215, 1265), rect.position.z));
+        transform.position = new Vector3(-3, Random.Range(-4.3f, 4.3f), 100);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (rect.position.x + 40 > 1440 && speed > 0) speed = -speed;
-        else if (rect.position.x - 40 < 0 && speed < 0) speed = -speed;
-        if (rect.position.y + 20 > 2620 && upDownSpeed > 0) upDownSpeed = -upDownSpeed;
-        else if (rect.position.y + 20 < 250 && upDownSpeed > 0) upDownSpeed = -upDownSpeed;
-        if(isSummon) rect.position = new Vector3(rect.position.x + speed * Time.deltaTime, rect.position.y + upDownSpeed * Time.deltaTime, rect.position.z);
-        else rect.position = new Vector3(-50, Random.Range(260, 2520), rect.position.z);
+        if (transform.position.x + 1f > 3f && speed > 0) speed = -speed;
+        else if (transform.position.x - 1f < -3f && speed < 0) speed = -speed;
+        if (transform.position.y + 1f > 4.3f && upDownSpeed > 0) upDownSpeed = -upDownSpeed;
+        else if (transform.position.y - 1f < -4.6f && upDownSpeed < 0) upDownSpeed = -upDownSpeed;
+        if(isSummon) transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y + upDownSpeed * Time.deltaTime, transform.position.z);
+        else transform.position = new Vector3(-3, Random.Range(-4.3f, 4.3f), 100);
+        if(scroll.targetPos < 0.25f)
+        {
+            SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = new Color(255, 255, 255, 0);
+
+        } else
+        {
+            SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = new Color(255, 255, 255, 100);
+        }
     }
 
     IEnumerator delay()
     {
         Debug.Log(cool);
         yield return new WaitForSeconds(1f);
-        if (cool > 1)
+        if (livingTime > 0)
+        {
+            livingTime--;
+        } else if (livingTime == 0)
+        {
+            isSummon = false;
+
+        }
+        if (cool > 0)
         {
             cool--;
-            if (isSummon && c < c -30)
-            {
-                isSummon = false;
-            }
+            
             StartCoroutine(delay());
 
         }
         else
         {
-            cool = Random.Range(10, 20);
+            cool = Random.Range(60, 120);
             StartCoroutine(delay());
-            rect.transform.position = new Vector3(0, rect.transform.position.y, 0);
+            transform.position = new Vector3(-3, Random.Range(-4.3f, 4.3f), 10);
             if(!isSummon) isSummon = true;
+            livingTime = 30;
            
 
 
@@ -77,12 +96,13 @@ public class MoneyBag : MonoBehaviour
         {
             direction = Random.Range(2, 4);
             int randomChoose = Random.Range(1, 3);
+            Debug.Log("UpDown:" + randomChoose);
             if(randomChoose == 1)
             {
-                upDownSpeed = Random.Range(120, 240);
+                upDownSpeed = Random.Range(0.4f, 0.8f);
             } else
             {
-                upDownSpeed = Random.Range(-240, -120);
+                upDownSpeed = Random.Range(-0.4f, -0.8f);
             }
             StartCoroutine(UpDown());
 

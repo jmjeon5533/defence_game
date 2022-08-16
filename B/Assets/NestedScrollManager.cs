@@ -15,8 +15,9 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     const int SIZE = 5; //스크롤뷰의 갯수
     float[] pos = new float[SIZE]; //스크롤뷰의 갯수만큼의 배열 생성
-    float distance, targetPos, curPos; //스크롤뷰의 간격
-    bool isDrag;
+    public float distance, targetPos, curPos; //스크롤뷰의 간격
+    public bool isDrag;
+    public bool isBeginDrag = false;
     int targetIndex;
 
     // Start is called before the first frame update
@@ -40,14 +41,18 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
             }
         return 0;
     }
-    public void OnBeginDrag(PointerEventData eventData) => curPos = SetPos();
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        curPos = SetPos();
+        isBeginDrag = true;
+    }
 
     public void OnDrag(PointerEventData eventData) => isDrag = true;
 
     public void OnEndDrag(PointerEventData eventData)
     {
         isDrag = false;
-
+        isBeginDrag=false;
         targetPos = SetPos();
 
         if (curPos == targetPos)

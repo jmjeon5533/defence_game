@@ -100,6 +100,11 @@ public class GameManager : MonoBehaviour
         feverError.SetActive(false);
     }
 
+    public void ClickMoneyBag()
+    {
+        Money += 1000 + PerSecondMoney * 60 + TouchMoney * 30;
+    }
+
 
     void Update()
     {

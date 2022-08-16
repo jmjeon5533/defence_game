@@ -12,10 +12,14 @@ public class Point : MonoBehaviour
     public Transform effectGroup;
     GameObject instant;
     Effect e;
+    public NestedScrollManager scrollManager;
+    public MoneyBag moneyBag;
     int cool;
+    public GameManager gameManager;
     void Start()
     {
         e = GetComponent<Effect>();
+        //scrollManager = GetComponent<NestedScrollManager>();
     }
 
     // Update is called once per frame
@@ -26,20 +30,39 @@ public class Point : MonoBehaviour
 
     void GetMousePosition()
     {
-        if (Input.GetButtonDown("Fire1"))
+        Vector3 mousePos = Input.mousePosition;
+
+        mousePos = new Vector3(mousePos.x, mousePos.y, 10);
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        mFollow.transform.position = mousePos;
+        if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePos = Input.mousePosition;
             
-            mousePos = new Vector3(mousePos.x, mousePos.y, 10);
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            mFollow.transform.position = mousePos;
-            
-           
-           
-            instant = Instantiate(effectPrefab,mousePos,effectPrefab.transform.rotation);
-            ParticleSystem instantEffect = instant.GetComponent<ParticleSystem>();
-            instantEffect.Play();
-            
+
+
+            if (scrollManager.targetPos < 0.25f && scrollManager.gameObject != null)
+            {
+                if (transform.position.y > -4.15f && transform.position.y < 4.31f && !scrollManager.isBeginDrag)
+                {
+
+                    instant = Instantiate(effectPrefab, mousePos, effectPrefab.transform.rotation);
+                    ParticleSystem instantEffect = instant.GetComponent<ParticleSystem>();
+                    instantEffect.Play();
+                }
+            }
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Physics.Raycast(ray, out hit);
+            if(hit.collider != null)
+            {
+                GameObject touchObject = hit.transform.gameObject;
+                if (touchObject.Equals(moneyBag.gameObject))
+                {
+                    moneyBag.isSummon = false;
+                    moneyBag.livingTime = 0;
+                    gameManager.ClickMoneyBag();
+                }
+            }
 
           
 
