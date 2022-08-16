@@ -89,7 +89,7 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     public void GetCoin()
     {
-        GameManager.Money += gm.TouchMoney;
+        GameManager.Money += (gm.TouchMoney + gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]);
     }
 
     public void TabClick(int n)

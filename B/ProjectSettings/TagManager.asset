@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Friend
-  - Enem
-  - friendly
   - NestedScrollManager
+  - ElementalFire
+  - ElementalWater
+  - ElementalGrass
+  - ElementalWind
   layers:
   - Default
   - TransparentFX
