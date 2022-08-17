@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("터치 재화량 레벨")]
     public int TouchMoneyLevel = 1; //터치 재화량 강화레벨
     [Tooltip("터치 재화량 강화 소모량")]
-    public float TouchMoneyDecrease = 10; //터치 재화량 강화 소모량
+    public float[] TouchMoneyDecrease = new float[50]; //터치 재화량 강화 소모량
     [Header("초당 관련")]
     public Text perSecondMoneyUp; 
     public Text PerSecondMoneyDec;
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("초당 재화량 레벨")]
     public int PerSecondMoneyLevel = 0; //초당 재화량 강화레벨
     [Tooltip("초당 재화량 강화 소모량")]
-    public float PerSecondMoneyDecrease = 150; //초당 재화량 강화 소모량
+    public float[] PerSecondMoneyDecrease = new float[50]; //초당 재화량 강화 소모량
     [Space(10)]
     [Tooltip("불 원소 강화 소모량")]
     public int[] ElementalFireUpgradeDecrease = new int[21]; //불 원소 강화 소모량
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     public int[] ElementalFireMoney = new int[21];//불 원소 터치당 재화 수급량
     public int[] ElementalWaterMoney = new int[21]; //물 원소 초당 재화 수급량
     public int ElementalGrassMoney = 0; //풀 원소 상한선 추가량
-    public float[] ElementalWindMoney = new float[11]; //바람 원소 피버 재사용 대기시간 감소량
+    public float[] ElementalWindMoney = new float[50]; //바람 원소 피버 재사용 대기시간 감소량
     [Space(10)]
     public int ElementalFireMoneyLevel = 0;
     public int ElementalWaterMoneyLevel = 0;
@@ -279,13 +279,13 @@ public class GameManager : MonoBehaviour
     }
     public void TouchUpgradeButton() //터치 재화량 강화
     {
-        if (Money >= TouchMoneyDecrease)
+        if (Money >= TouchMoneyDecrease[TouchMoneyLevel])
         {
             if (!FeverOn)
             {
                 TouchMoneyLevel++;
-                Money -= (uint)TouchMoneyDecrease;
-                TouchMoneyDecrease = Mathf.Round(TouchMoneyDecrease * 1.15f);
+                Money -= (uint)TouchMoneyDecrease[TouchMoneyLevel];
+                TouchMoneyDecrease[TouchMoneyLevel] = Mathf.Round(TouchMoneyDecrease[TouchMoneyLevel]);
                 TouchMoney += 2;
             }
             else
@@ -296,13 +296,13 @@ public class GameManager : MonoBehaviour
     }
     public void PerSecondUpgradeButton() //초당 재화량 강화
     {
-        if (Money >= PerSecondMoneyDecrease)
+        if (Money >= PerSecondMoneyDecrease[PerSecondMoneyLevel])
         {
             if (!FeverOn)
             {
                 PerSecondMoneyLevel++;
-                Money -= (uint)PerSecondMoneyDecrease;
-                PerSecondMoneyDecrease = Mathf.Round(PerSecondMoneyDecrease * 1.2f);
+                Money -= (uint)PerSecondMoneyDecrease[PerSecondMoneyLevel];
+                PerSecondMoneyDecrease[PerSecondMoneyLevel] = Mathf.Round(PerSecondMoneyDecrease[PerSecondMoneyLevel]);
                 PerSecondMoney += 20;
             }
             else

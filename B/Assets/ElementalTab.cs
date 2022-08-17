@@ -34,7 +34,7 @@ public class ElementalTab : MonoBehaviour
     void Update()
     {
         Decrease();
-        vec = new Vector2(Random.Range(-2.4f, 2.4f), Random.Range(-4.2f, 1.5f));
+        vec = new Vector2(Random.Range(-1.9f, 1.9f), Random.Range(-1.85f, 1.85f));
     }
     void Decrease() //강화 비용
     {
@@ -106,28 +106,21 @@ public class ElementalTab : MonoBehaviour
     }
     public void GrassButton()
     {
-        if (!gm.ElementalMaximum)
+        if (GameManager.Money >=
+        gm.ElementalGrassUpgradeDecrease[gm.ElementalGrassLevel])
         {
-            if (GameManager.Money >=
-            gm.ElementalGrassUpgradeDecrease[gm.ElementalGrassLevel])
-            {
 
-                GameManager.Money -= (uint)gm.ElementalGrassUpgradeDecrease[gm.ElementalGrassLevel];
-                gm.ElementalGrassLevel++;
-                gm.ElementalGrassOn = true;
-                Instantiate(Grass, vec, Quaternion.identity);
-                gm.ElementalGrassMoney++;
+            GameManager.Money -= (uint)gm.ElementalGrassUpgradeDecrease[gm.ElementalGrassLevel];
+            gm.ElementalGrassLevel++;
+            gm.ElementalGrassOn = true;
+            Instantiate(Grass, vec, Quaternion.identity);
+            gm.ElementalGrassMoney++;
+            gm.ElementalGrassMoneyLevel++;
+            if (gm.ElementalGrassMoneyLevel == 10)
+            {
+                Grassbutton.SetActive(false);
                 gm.ElementalGrassMoneyLevel++;
-                if(gm.ElementalGrassMoneyLevel == 10)
-                {
-                    Grassbutton.SetActive(false);
-                    gm.ElementalGrassMoneyLevel++;
-                }
             }
-        }
-        else
-        {
-            gm.ElementalError();
         }
     }
     public void WindButton()

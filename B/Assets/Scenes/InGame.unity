@@ -1454,7 +1454,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1782534461}
   m_HandleRect: {fileID: 1782534460}
   m_Direction: 0
-  m_Value: 0.67249995
+  m_Value: 0.000000042385526
   m_Size: 0.2
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4799,7 +4799,7 @@ Transform:
   - {fileID: 770421500}
   - {fileID: 305043201}
   m_Father: {fileID: 1585587566}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &940545071
 GameObject:
@@ -5149,7 +5149,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1585587566}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6345,12 +6345,12 @@ MonoBehaviour:
   TouchMoneyDec: {fileID: 2090390767}
   TouchMoney: 1
   TouchMoneyLevel: 1
-  TouchMoneyDecrease: 20
+  TouchMoneyDecrease: []
   perSecondMoneyUp: {fileID: 1964923696}
   PerSecondMoneyDec: {fileID: 2129079266}
   PerSecondMoney: 0
   PerSecondMoneyLevel: 0
-  PerSecondMoneyDecrease: 150
+  PerSecondMoneyDecrease: []
   ElementalFireUpgradeDecrease: 10270000e02e0000983a000050460000204e0000a86100004871000030750000d084000058980000c8af000060ea000040190100084c0100a0860100c0d40100580f02006061020020bf0200400d030000000000
   ElementalWaterUpgradeDecrease: 30750000d084000088900000c8af000068bf0000f0d2000090e20000e8fd000058150100b0300100f04f0100a0860100c0d40100f049020020bf0200605b030090d00300d06c040000e20400801a060000000000
   ElementalGrassUpgradeDecrease: a0860100c0d40100e02202000071020020bf0200400d030090d00300f0ba04003057050020a1070020a10700
@@ -6457,7 +6457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3873.5999, y: 0}
+  m_AnchoredPosition: {x: -0.00024414062, y: 0}
   m_SizeDelta: {x: 0, y: 2760}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1318977164
@@ -7590,9 +7590,9 @@ RectTransform:
   - {fileID: 250888100}
   - {fileID: 803848601}
   - {fileID: 1612216731}
+  - {fileID: 1752468202}
   - {fileID: 922112219}
   - {fileID: 1058562494}
-  - {fileID: 1752468202}
   - {fileID: 788175785}
   - {fileID: 400360329}
   m_Father: {fileID: 1318977163}
@@ -8526,12 +8526,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1585587566}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.9744, y: 146.1995}
-  m_SizeDelta: {x: 2321.773, y: 2500.7434}
+  m_AnchoredPosition: {x: 0, y: -337.6499}
+  m_SizeDelta: {x: 1440, y: 1551}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752468203
 MonoBehaviour:
@@ -9259,7 +9259,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.0021276
+  orthographic size: 2.6
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
