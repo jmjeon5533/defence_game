@@ -13,7 +13,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - MoneyPack
+  - icon
   - Water
   - UI
   - 
@@ -43,6 +43,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UI
+    uniqueID: 1561588245
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: icon
+    uniqueID: 1529623091
     locked: 0

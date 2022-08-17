@@ -15,9 +15,10 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     const int SIZE = 5; //스크롤뷰의 갯수
     float[] pos = new float[SIZE]; //스크롤뷰의 갯수만큼의 배열 생성
-    float distance, targetPos, curPos; //스크롤뷰의 간격
-    bool isDrag;
-    public int targetIndex;
+    public float distance, targetPos, curPos; //스크롤뷰의 간격
+    public bool isDrag;
+    public bool isBeginDrag = false;
+    int targetIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -40,14 +41,18 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
             }
         return 0;
     }
-    public void OnBeginDrag(PointerEventData eventData) => curPos = SetPos();
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        curPos = SetPos();
+        isBeginDrag = true;
+    }
 
     public void OnDrag(PointerEventData eventData) => isDrag = true;
 
     public void OnEndDrag(PointerEventData eventData)
     {
         isDrag = false;
-
+        isBeginDrag=false;
         targetPos = SetPos();
 
         if (curPos == targetPos)
@@ -63,6 +68,18 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
                 targetPos = curPos + distance;
             }
         }
+/*
+        for (int i = 0; i < SIZE; i++)
+        {
+            for (int j = 0; j < SIZE; j++)
+            {
+                if (contentTr.GetChild(i).GetChild(j).GetComponent<ScrollScript>() && curPos != pos[i] && targetPos == pos[i])
+                {
+                    contentTr.GetChild(i).GetChild(0).GetComponent<Scrollbar>().value = 1;
+                }
+            }
+        }
+*/
     }
     // Update is called once per frame
     void Update()
@@ -77,7 +94,7 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     public void GetCoin()
     {
-        GameManager.Money += (uint)(gm.TouchMoney + gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]);
+        GameManager.Money += (gm.TouchMoney + gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]);
     }
 
     public void TabClick(int n)
