@@ -17,7 +17,7 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
     float[] pos = new float[SIZE]; //스크롤뷰의 갯수만큼의 배열 생성
     float distance, targetPos, curPos; //스크롤뷰의 간격
     bool isDrag;
-    int targetIndex;
+    public int targetIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -63,18 +63,6 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
                 targetPos = curPos + distance;
             }
         }
-/*
-        for (int i = 0; i < SIZE; i++)
-        {
-            for (int j = 0; j < SIZE; j++)
-            {
-                if (contentTr.GetChild(i).GetChild(j).GetComponent<ScrollScript>() && curPos != pos[i] && targetPos == pos[i])
-                {
-                    contentTr.GetChild(i).GetChild(0).GetComponent<Scrollbar>().value = 1;
-                }
-            }
-        }
-*/
     }
     // Update is called once per frame
     void Update()
@@ -89,7 +77,7 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     public void GetCoin()
     {
-        GameManager.Money += (gm.TouchMoney + gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]);
+        GameManager.Money += (uint)(gm.TouchMoney + gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]);
     }
 
     public void TabClick(int n)

@@ -18,6 +18,8 @@ public class ElementalTab : MonoBehaviour
 
     Vector2 vec;
 
+    public GameObject Firebutton, Waterbutton, Grassbutton, Windbutton;
+
     void Start()
     {
         gm = GetComponent<GameManager>();
@@ -31,20 +33,20 @@ public class ElementalTab : MonoBehaviour
     }
     void Decrease() //강화 비용
     {
-        FireDec.text = $"비용 :\n{gm.ElementalFireUpgradeDecrease[gm.ElementalFireLevel]}";
-        WaterDec.text = $"비용 :\n{gm.ElementalWaterUpgradeDecrease[gm.ElementalWaterLevel]}";
-        GrassDec.text = $"비용 :\n{gm.ElementalGrassUpgradeDecrease[gm.ElementalGrassLevel]}";
-        WindDec.text = $"비용 :\n{gm.ElementalWindUpgradeDecrease[gm.ElementalWindLevel]}";
+        FireDec.text = string.Format("비용 :\n{0:N0}",gm.ElementalFireUpgradeDecrease[gm.ElementalFireLevel]);
+        WaterDec.text = string.Format("비용 :\n{0:N0}", gm.ElementalWaterUpgradeDecrease[gm.ElementalWaterLevel]);
+        GrassDec.text = string.Format("비용 :\n{0:N0}", gm.ElementalGrassUpgradeDecrease[gm.ElementalGrassLevel]);
+        WindDec.text = string.Format("비용 :\n{0:N0}", gm.ElementalWindUpgradeDecrease[gm.ElementalWindLevel]);
 
-        FirePerSecond.text = $"+터지 당\n재화 수급 +{gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]}";
-        WaterPerSecond.text = $"초당\n재화 수급 +{gm.ElementalWaterMoney[gm.ElementalWaterMoneyLevel]}";
+        FirePerSecond.text = string.Format("+터지 당\n재화 수급 +{0:N0}", gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]);
+        WaterPerSecond.text = string.Format("초당\n재화 수급 +{0:N0}", gm.ElementalWaterMoney[gm.ElementalWaterMoneyLevel]);
         GrassPerSecond.text = $"원소 상한선 추가 +{gm.ElementalGrassMoney}";
-        WindPerSecond.text = $"피버 재사용\n대기시간 감소 +{gm.ElementalWindMoney}";
+        WindPerSecond.text = $"피버 재사용\n대기시간 감소 +{gm.ElementalWindMoney[gm.ElementalWindMoneyLevel]}";
 
         FireNum.text = $"+{gm.ElementalFireNumber}";
         WaterNum.text = $"+{gm.ElementalWaterNumber}";
         GrassNum.text = $"+{gm.ElementalGrassNumber}";
-        WindNum.text = $"{gm.ElementalWindNumber}";
+        WindNum.text = $"+{gm.ElementalWindNumber}";
     }
     public void FireButton()
     {
@@ -54,12 +56,16 @@ public class ElementalTab : MonoBehaviour
                 gm.ElementalFireUpgradeDecrease[gm.ElementalFireLevel])
             {
 
-                GameManager.Money -= gm.ElementalFireUpgradeDecrease[gm.ElementalFireLevel];
+                GameManager.Money -= (uint)gm.ElementalFireUpgradeDecrease[gm.ElementalFireLevel];
                 gm.ElementalFireLevel++;
                 gm.ElementalFireOn = true;
                 Instantiate(Fire, vec, Quaternion.identity);
                 gm.ElementalFireMoneyLevel++;
                 gm.ElementalFireNumber++;
+                if (gm.ElementalFireMoneyLevel == 20)
+                {
+                    Firebutton.SetActive(false);
+                }
             }
         }
         else
@@ -75,12 +81,17 @@ public class ElementalTab : MonoBehaviour
             gm.ElementalWaterUpgradeDecrease[gm.ElementalWaterLevel])
             {
 
-                GameManager.Money -= gm.ElementalWaterUpgradeDecrease[gm.ElementalWaterLevel];
+                GameManager.Money -= (uint)gm.ElementalWaterUpgradeDecrease[gm.ElementalWaterLevel];
                 gm.ElementalWaterLevel++;
                 gm.ElementalWaterOn = true;
                 Instantiate(Water, vec, Quaternion.identity);
                 gm.ElementalWaterMoneyLevel++;
                 gm.ElementalWaterNumber++;
+                if (gm.ElementalWaterMoneyLevel == 20)
+                {
+                    Waterbutton.SetActive(false);
+                    gm.ElementalWaterMoneyLevel++;
+                }
             }
         }
         else
@@ -96,12 +107,18 @@ public class ElementalTab : MonoBehaviour
             gm.ElementalGrassUpgradeDecrease[gm.ElementalGrassLevel])
             {
 
-                GameManager.Money -= gm.ElementalFireUpgradeDecrease[gm.ElementalGrassLevel];
+                GameManager.Money -= (uint)gm.ElementalGrassUpgradeDecrease[gm.ElementalGrassLevel];
                 gm.ElementalGrassLevel++;
                 gm.ElementalGrassOn = true;
                 Instantiate(Grass, vec, Quaternion.identity);
+                gm.ElementalGrassMoney++;
                 gm.ElementalGrassMoneyLevel++;
                 gm.ElementalGrassNumber++;
+                if(gm.ElementalGrassMoneyLevel == 10)
+                {
+                    Grassbutton.SetActive(false);
+                    gm.ElementalGrassMoneyLevel++;
+                }
             }
         }
         else
@@ -114,15 +131,19 @@ public class ElementalTab : MonoBehaviour
         if (!gm.ElementalMaximum)
         {
             if (GameManager.Money >=
-            gm.ElementalWindUpgradeDecrease[gm.ElementalFireLevel])
+            gm.ElementalWindUpgradeDecrease[gm.ElementalWindLevel])
             {
 
-                GameManager.Money -= gm.ElementalWindUpgradeDecrease[gm.ElementalWindLevel];
+                GameManager.Money -= (uint)gm.ElementalWindUpgradeDecrease[gm.ElementalWindLevel];
                 gm.ElementalWindLevel++;
                 gm.ElementalWindOn = true;
                 Instantiate(Wind, vec, Quaternion.identity);
                 gm.ElementalWindMoneyLevel++;
                 gm.ElementalWindNumber++;
+                if(gm.ElementalWindMoneyLevel == 10)
+                {
+                    Windbutton.SetActive(false);
+                }
             }
         }
         else

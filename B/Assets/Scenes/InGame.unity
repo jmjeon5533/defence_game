@@ -5557,107 +5557,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127139002}
   m_CullTransparentMesh: 1
---- !u!1 &1127879002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1127879003}
-  - component: {fileID: 1127879005}
-  - component: {fileID: 1127879004}
-  m_Layer: 3
-  m_Name: MoneyPack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1127879003
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127879002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1912432958}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1127879004
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127879002}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!212 &1127879005
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127879002}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1145843589
 GameObject:
   m_ObjectHideFlags: 0
@@ -5825,7 +5724,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1296233535}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: FeverSetButton
+        m_MethodName: feverSetButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6389,10 +6288,10 @@ MonoBehaviour:
   PerSecondMoney: 0
   PerSecondMoneyLevel: 0
   PerSecondMoneyDecrease: 150
-  ElementalFireUpgradeDecrease: 10270000e02e0000983a000050460000204e0000a86100004871000030750000d084000058980000c8af0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  ElementalWaterUpgradeDecrease: 30750000d084000088900000c8af000068bf0000f0d2000090e20000e8fd000058150100b0300100f04f0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  ElementalGrassUpgradeDecrease: a0860100c0d40100e02202000071020020bf0200400d030090d00300f0ba04003057050020a10700
-  ElementalWindUpgradeDecrease: 400d0300e02e00000000000000000000000000000000000000000000000000000000000000000000
+  ElementalFireUpgradeDecrease: 10270000e02e0000983a000050460000204e0000a86100004871000030750000d084000058980000c8af000060ea000040190100084c0100a0860100c0d40100580f02006061020020bf0200400d030000000000
+  ElementalWaterUpgradeDecrease: 30750000d084000088900000c8af000068bf0000f0d2000090e20000e8fd000058150100b0300100f04f0100a0860100c0d40100f049020020bf0200605b030090d00300d06c040000e20400801a060000000000
+  ElementalGrassUpgradeDecrease: a0860100c0d40100e02202000071020020bf0200400d030090d00300f0ba04003057050020a1070020a10700
+  ElementalWindUpgradeDecrease: 400d0300e02e0000c05d0000409c0000d8d60000b8050100084c0100b8820100c0d40100e0220200400d0300
   ElementalFireLevel: 0
   ElementalWaterLevel: 0
   ElementalGrassLevel: 0
@@ -6401,10 +6300,11 @@ MonoBehaviour:
   ElementalWaterOn: 0
   ElementalGrassOn: 0
   ElementalWindOn: 0
-  ElementalFireMoney: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f00000010000000110000001200000013000000140000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  ElementalWaterMoney: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  ElementalGrassMoney: 1
+  ElementalFireMoney: 000000000a000000140000001e00000028000000320000003c00000046000000500000005a000000640000006e00000078000000820000008c00000096000000a0000000aa000000b4000000be000000c8000000d2000000
+  ElementalWaterMoney: 000000002c0100005802000084030000b0040000dc0500000807000034080000600900008c0a0000b80b0000e40c0000100e00003c0f00006810000094110000c01200001815000044160000701700009c180000c8190000
+  ElementalGrassMoney: 0
   ElementalWindMoney:
+  - 0
   - 0.03
   - 0.06
   - 0.09
@@ -6415,6 +6315,7 @@ MonoBehaviour:
   - 0.26
   - 0.29
   - 0.33
+  - 0.36
   ElementalFireMoneyLevel: 0
   ElementalWaterMoneyLevel: 0
   ElementalGrassMoneyLevel: 0
@@ -6440,12 +6341,14 @@ MonoBehaviour:
   fever: {fileID: 922112218}
   TouchEndFeverValue: 0
   PerEndFeverValue: 0
-  FeverTimeupgrade: 1.5
-  FeverCooltimeUpgrade: 0.5
+  FeverTimeupgrade: 1
+  FeverCooltimeUpgrade: 0
   FeverTimeUp: {fileID: 787134316}
   FeverTimeDec: {fileID: 408122783}
+  FeverTimeis: 0
   FeverCoolTimeUp: {fileID: 1190569229}
   FeverCoolTimeDec: {fileID: 493828692}
+  FeverCoolTimeis: 0
   FeverSetButton: {fileID: 1184146500}
   FeverTimeButton: {fileID: 1079599063}
   FeverCoolTimeButton: {fileID: 593620968}
@@ -6475,14 +6378,18 @@ MonoBehaviour:
   WaterPerSecond: {fileID: 2119543235}
   GrassPerSecond: {fileID: 965954828}
   WindPerSecond: {fileID: 824265747}
-  Fire: {fileID: 6429705259736347335, guid: e7fe0b894bc97ed44b36e8797c5cc36f, type: 3}
-  Water: {fileID: 0}
-  Grass: {fileID: 0}
-  Wind: {fileID: 0}
+  Fire: {fileID: 7639236069030688395, guid: 3c9ccc842796bd94cb55f9147c58d10f, type: 3}
+  Water: {fileID: 6622669407412475599, guid: 0ecb7c7767919954e8449f86ac36bdde, type: 3}
+  Grass: {fileID: 7663606373091413207, guid: 24901cf3fe0ae124e8d6076ed961c474, type: 3}
+  Wind: {fileID: 757512657312496942, guid: 4b00cb77238964e4e8f82dd29b54ab7a, type: 3}
   FireNum: {fileID: 691566024}
   WaterNum: {fileID: 1890981260}
   GrassNum: {fileID: 1615335903}
   WindNum: {fileID: 57092501}
+  Firebutton: {fileID: 160136698}
+  Waterbutton: {fileID: 1902259205}
+  Grassbutton: {fileID: 906977446}
+  Windbutton: {fileID: 163345725}
 --- !u!1 &1318977162
 GameObject:
   m_ObjectHideFlags: 0
@@ -9345,8 +9252,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1127879003}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
