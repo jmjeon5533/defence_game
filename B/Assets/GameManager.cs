@@ -133,11 +133,6 @@ public class GameManager : MonoBehaviour
         feverError.SetActive(false);
     }
 
-    public void ClickMoneyBag()
-    {
-        Money += 1000 + PerSecondMoney * 60 + TouchMoney * 30;
-    }
-
 
     void Update()
     {
@@ -157,7 +152,7 @@ public class GameManager : MonoBehaviour
                 if (nes.targetIndex == 0)
                 {
                     Destroy(hit.collider.gameObject);
-                    Money += 10000;
+                    Money += 10000 + (uint)(500 * (TouchMoneyLevel + PerSecondMoneyLevel));
                 }
             }
         }
@@ -195,7 +190,6 @@ public class GameManager : MonoBehaviour
         ElementalNumber = (
             ElementalFireNumber
             + ElementalWaterNumber
-            + ElementalGrassNumber
             + ElementalWindNumber);
         if ((ElementalMaxNum + ElementalGrassMoney) == ElementalNumber) ElementalMaximum = true;
     }
@@ -245,20 +239,34 @@ public class GameManager : MonoBehaviour
     }
     public void FeverTimeUpgrade()
     {
-        if (Money >= FeverTimeDecrease)
+        if (!FeverOn)
         {
-            Money -= (uint)FeverTimeDecrease;
-            FeverTimeupgrade = 1.5f;
-            FeverTimeButton.SetActive(false);
+            if (Money >= FeverTimeDecrease)
+            {
+                Money -= (uint)FeverTimeDecrease;
+                FeverTimeupgrade = 1.5f;
+                FeverTimeButton.SetActive(false);
+            }
+        }
+        else
+        {
+            StartCoroutine(FeverOnError());
         }
     }
     public void FeverCoolTimeUpgrade()
     {
-        if (Money >= FeverCooltimeDecrease)
+        if (!FeverOn)
         {
-            Money -= (uint)FeverCooltimeDecrease;
-            FeverCooltimeUpgrade = 0.3f;
-            FeverCoolTimeButton.SetActive(false);
+            if (Money >= FeverCooltimeDecrease)
+            {
+                Money -= (uint)FeverCooltimeDecrease;
+                FeverCooltimeUpgrade = 0.3f;
+                FeverCoolTimeButton.SetActive(false);
+            }
+        }
+        else
+        {
+            StartCoroutine(FeverOnError());
         }
     }
     IEnumerator PerMoneyCount() //초당 재화 수급

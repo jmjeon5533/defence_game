@@ -23,8 +23,6 @@ public class MoneyBag : MonoBehaviour
         direction = Random.Range(2,4);
         StartCoroutine(UpDown());
         StartCoroutine(delay());
-        //rect = GetComponent<RectTransform>();
-        //rect.position = Camera.main.ScreenToWorldPoint(new Vector3(-800, Random.Range(-1215, 1265), rect.position.z));
         transform.position = new Vector3(-3, Random.Range(-4.3f, 4.3f), 100);
     }
 

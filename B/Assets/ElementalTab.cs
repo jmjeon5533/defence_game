@@ -5,10 +5,15 @@ using UnityEngine.UI;
 
 public class ElementalTab : MonoBehaviour
 {
+    public static ElementalTab elemetal = new ElementalTab();
+    private ElementalTab() { }
+
+    public static ElementalTab getInstance()
+    {
+        return elemetal;
+    }
     GameManager gm;
     public Text FireDec, WaterDec, GrassDec, WindDec;
-
-    public Text FireButtonText, WaterButtonText, GrassButtonText, WindButtonText;
 
     public Text FirePerSecond, WaterPerSecond, GrassPerSecond, WindPerSecond;
 
@@ -22,14 +27,14 @@ public class ElementalTab : MonoBehaviour
 
     void Start()
     {
-        gm = GetComponent<GameManager>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         
     }
 
     void Update()
     {
         Decrease();
-        vec = new Vector2(Random.Range(-1.85f, 1.85f), Random.Range(-1.85f, 1.85f));
+        vec = new Vector2(Random.Range(-2.4f, 2.4f), Random.Range(-4.2f, 1.5f));
     }
     void Decrease() //강화 비용
     {
@@ -113,7 +118,6 @@ public class ElementalTab : MonoBehaviour
                 Instantiate(Grass, vec, Quaternion.identity);
                 gm.ElementalGrassMoney++;
                 gm.ElementalGrassMoneyLevel++;
-                gm.ElementalGrassNumber++;
                 if(gm.ElementalGrassMoneyLevel == 10)
                 {
                     Grassbutton.SetActive(false);

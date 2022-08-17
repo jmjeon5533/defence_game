@@ -18,7 +18,7 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
     public float distance, targetPos, curPos; //스크롤뷰의 간격
     public bool isDrag;
     public bool isBeginDrag = false;
-    int targetIndex;
+    public int targetIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +94,7 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     public void GetCoin()
     {
-        GameManager.Money += (gm.TouchMoney + gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]);
+        GameManager.Money += (uint)(gm.TouchMoney + gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]);
     }
 
     public void TabClick(int n)

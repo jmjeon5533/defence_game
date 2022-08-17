@@ -813,7 +813,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1296233536}
+      - m_Target: {fileID: 602672199}
         m_TargetAssemblyTypeName: ElementalTab, Assembly-CSharp
         m_MethodName: FireButton
         m_Mode: 1
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1296233536}
+      - m_Target: {fileID: 602672199}
         m_TargetAssemblyTypeName: ElementalTab, Assembly-CSharp
         m_MethodName: WindButton
         m_Mode: 1
@@ -1454,8 +1454,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1782534461}
   m_HandleRect: {fileID: 1782534460}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.2
+  m_Value: 0.8
+  m_Size: 0.16666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2067,6 +2067,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408122781}
   m_CullTransparentMesh: 1
+--- !u!1 &435582220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 435582221}
+  - component: {fileID: 435582223}
+  - component: {fileID: 435582222}
+  m_Layer: 5
+  m_Name: 5 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &435582221
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435582220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1318977163}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1440, y: 2800}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &435582222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435582220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.4575472, g: 1, b: 0.8972213, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &435582223
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435582220}
+  m_CullTransparentMesh: 1
 --- !u!1 &454943839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,7 +2358,7 @@ RectTransform:
   - {fileID: 1709387692}
   - {fileID: 454943840}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2724,7 +2800,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &592051661
 GameObject:
@@ -2941,6 +3017,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593620968}
   m_CullTransparentMesh: 1
+--- !u!1 &602672197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 602672198}
+  - component: {fileID: 602672199}
+  m_Layer: 0
+  m_Name: ElementalManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &602672198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602672197}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 161.12982, y: 140.82643, z: 1.9417503}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602672199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602672197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c69eaec45da791488afd1e12b2a239c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireDec: {fileID: 236548441}
+  WaterDec: {fileID: 266568852}
+  GrassDec: {fileID: 1454676513}
+  WindDec: {fileID: 592051663}
+  FirePerSecond: {fileID: 2143827390}
+  WaterPerSecond: {fileID: 2119543235}
+  GrassPerSecond: {fileID: 965954828}
+  WindPerSecond: {fileID: 824265747}
+  Fire: {fileID: 7224505700319383071, guid: 3c9ccc842796bd94cb55f9147c58d10f, type: 3}
+  Water: {fileID: 6622669407412475599, guid: 0ecb7c7767919954e8449f86ac36bdde, type: 3}
+  Grass: {fileID: 7663606373091413207, guid: 24901cf3fe0ae124e8d6076ed961c474, type: 3}
+  Wind: {fileID: 757512657312496942, guid: 4b00cb77238964e4e8f82dd29b54ab7a, type: 3}
+  FireNum: {fileID: 691566024}
+  WaterNum: {fileID: 1890981260}
+  GrassNum: {fileID: 1615335903}
+  WindNum: {fileID: 57092501}
+  Firebutton: {fileID: 160136698}
+  Waterbutton: {fileID: 1902259205}
+  Grassbutton: {fileID: 906977446}
+  Windbutton: {fileID: 163345725}
 --- !u!1 &609399872
 GameObject:
   m_ObjectHideFlags: 0
@@ -4544,7 +4684,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1296233536}
+      - m_Target: {fileID: 602672199}
         m_TargetAssemblyTypeName: ElementalTab, Assembly-CSharp
         m_MethodName: GrassButton
         m_Mode: 1
@@ -6242,7 +6382,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1296233534}
   - component: {fileID: 1296233535}
-  - component: {fileID: 1296233536}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -6291,7 +6430,7 @@ MonoBehaviour:
   ElementalFireUpgradeDecrease: 10270000e02e0000983a000050460000204e0000a86100004871000030750000d084000058980000c8af000060ea000040190100084c0100a0860100c0d40100580f02006061020020bf0200400d030000000000
   ElementalWaterUpgradeDecrease: 30750000d084000088900000c8af000068bf0000f0d2000090e20000e8fd000058150100b0300100f04f0100a0860100c0d40100f049020020bf0200605b030090d00300d06c040000e20400801a060000000000
   ElementalGrassUpgradeDecrease: a0860100c0d40100e02202000071020020bf0200400d030090d00300f0ba04003057050020a1070020a10700
-  ElementalWindUpgradeDecrease: 400d0300e02e0000c05d0000409c0000d8d60000b8050100084c0100b8820100c0d40100e0220200400d0300
+  ElementalWindUpgradeDecrease: a0860100c0d40100e0220200400d030090d00300e0930400407e0500a0680600d0dd0600603d0800c0270900
   ElementalFireLevel: 0
   ElementalWaterLevel: 0
   ElementalGrassLevel: 0
@@ -6354,42 +6493,6 @@ MonoBehaviour:
   FeverCoolTimeButton: {fileID: 593620968}
   feverError: {fileID: 94615506}
   FeverOn: 0
---- !u!114 &1296233536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296233533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c69eaec45da791488afd1e12b2a239c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FireDec: {fileID: 236548441}
-  WaterDec: {fileID: 266568852}
-  GrassDec: {fileID: 1454676513}
-  WindDec: {fileID: 592051663}
-  FireButtonText: {fileID: 236548441}
-  WaterButtonText: {fileID: 266568852}
-  GrassButtonText: {fileID: 1454676513}
-  WindButtonText: {fileID: 592051663}
-  FirePerSecond: {fileID: 2143827390}
-  WaterPerSecond: {fileID: 2119543235}
-  GrassPerSecond: {fileID: 965954828}
-  WindPerSecond: {fileID: 824265747}
-  Fire: {fileID: 7639236069030688395, guid: 3c9ccc842796bd94cb55f9147c58d10f, type: 3}
-  Water: {fileID: 6622669407412475599, guid: 0ecb7c7767919954e8449f86ac36bdde, type: 3}
-  Grass: {fileID: 7663606373091413207, guid: 24901cf3fe0ae124e8d6076ed961c474, type: 3}
-  Wind: {fileID: 757512657312496942, guid: 4b00cb77238964e4e8f82dd29b54ab7a, type: 3}
-  FireNum: {fileID: 691566024}
-  WaterNum: {fileID: 1890981260}
-  GrassNum: {fileID: 1615335903}
-  WindNum: {fileID: 57092501}
-  Firebutton: {fileID: 160136698}
-  Waterbutton: {fileID: 1902259205}
-  Grassbutton: {fileID: 906977446}
-  Windbutton: {fileID: 163345725}
 --- !u!1 &1318977162
 GameObject:
   m_ObjectHideFlags: 0
@@ -6425,12 +6528,13 @@ RectTransform:
   - {fileID: 1080384234}
   - {fileID: 888442745}
   - {fileID: 609399873}
+  - {fileID: 435582221}
   m_Father: {fileID: 616912803}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -5760, y: 0}
   m_SizeDelta: {x: 0, y: 2760}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1318977164
@@ -6732,6 +6836,11 @@ MonoBehaviour:
   - {fileID: 129361927}
   - {fileID: 191717214}
   - {fileID: 1226941623}
+  distance: 0
+  targetPos: 0
+  curPos: 0
+  isDrag: 0
+  isBeginDrag: 0
   targetIndex: 0
 --- !u!114 &1343326021
 MonoBehaviour:
@@ -7621,6 +7730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a6f4538a490d849ba216d55ff7df33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TouchEffect: {fileID: 4803520073271459456, guid: cff113a857d77af4f9c0f5c21a2dd05c, type: 3}
   manager: {fileID: 1343326020}
 --- !u!1 &1598419015
 GameObject:
@@ -8497,8 +8607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0049744, y: -334.2}
-  m_SizeDelta: {x: 1440, y: 1551}
+  m_AnchoredPosition: {x: 0.9744, y: 146.1995}
+  m_SizeDelta: {x: 2321.773, y: 2500.7434}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752468203
 MonoBehaviour:
@@ -9132,7 +9242,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1296233536}
+      - m_Target: {fileID: 602672199}
         m_TargetAssemblyTypeName: ElementalTab, Assembly-CSharp
         m_MethodName: WaterButton
         m_Mode: 1
@@ -9226,7 +9336,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.6154432
+  orthographic size: 5.0021276
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -9255,7 +9365,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1924385212
 GameObject:

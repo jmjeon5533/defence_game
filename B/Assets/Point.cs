@@ -50,22 +50,6 @@ public class Point : MonoBehaviour
                     instantEffect.Play();
                 }
             }
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Physics.Raycast(ray, out hit);
-            if(hit.collider != null)
-            {
-                GameObject touchObject = hit.transform.gameObject;
-                if (touchObject.Equals(moneyBag.gameObject))
-                {
-                    moneyBag.isSummon = false;
-                    moneyBag.livingTime = 0;
-                    gameManager.ClickMoneyBag();
-                }
-            }
-
-          
-
         }
     }
 
