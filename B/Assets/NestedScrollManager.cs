@@ -13,7 +13,7 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     GameManager gm;
 
-    const int SIZE = 5; //스크롤뷰의 갯수
+    const int SIZE = 3; //스크롤뷰의 갯수
     float[] pos = new float[SIZE]; //스크롤뷰의 갯수만큼의 배열 생성
     public float distance, targetPos, curPos; //스크롤뷰의 간격
     public bool isDrag;
@@ -88,13 +88,13 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
         
         if (!isDrag) scroll.value = Mathf.Lerp(scroll.value, targetPos, 0.1f);
         
-        for (int i = 0; i < SIZE; i++) BtnRect[i].sizeDelta = new Vector2(i == targetIndex ? 480 : 240, BtnRect[i].sizeDelta.y);
+        //for (int i = 0; i < SIZE; i++) BtnRect[i].sizeDelta = new Vector2(i == targetIndex ? 480 : 240, BtnRect[i].sizeDelta.y);
         
     }
 
     public void GetCoin()
     {
-        GameManager.Money += (uint)(gm.TouchMoney + gm.ElementalFireMoney[gm.ElementalFireMoneyLevel]);
+        GameManager.Money += (uint)(gm.TouchMoney[gm.TouchMoneyLevel] + gm.ElementalFireMoney);
     }
 
     public void TabClick(int n)
